@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from 'react-router-dom'
 
+import Header from "./components/Header"
+import Body from "./components/Body"
+
 import './style/style.css'
 
 const App = () => {
@@ -9,7 +12,8 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <p>Hello</p>
+        <Header />
+        <Body />
       </BrowserRouter>
     </div>
   )
