@@ -37,7 +37,7 @@ const Body = () => {
                 <button class='submitparams' onClick={submitparams}>Go</button> 
             </div>
             
-            <Result ticker={selectedtext} pricestring={selectedexpprice} date={date} currentprice={stockprice}/>
+            <Result ticker={selectedtext} pricestring={selectedexpprice} date={selecteddate} currentprice={stockprice}/>
             
         </div>
     )

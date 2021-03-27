@@ -2,10 +2,16 @@ import {useState,useEffect} from 'react'
 
 import axios from 'axios'
 
+import blackScholes from './blackscholes'
 import {marketstackkey,tdkey} from "./../apikey.js"
 
-const calcreturn = () => {
-    return Math.random()*201;
+const MS_PER_YEAR = 1000*60*60*24*365
+
+const calcreturn = (option,estprice,date) => {
+    const dateutc = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    const timetoexp = (option.expirationDate-dateutc)/MS_PER_YEAR
+    const optionprice = (option.bid+option.ask)/2
+    return (blackScholes(estprice,option.strikePrice,timetoexp,option.theoreticalVolatility/100.0,0.027,"call")/optionprice-1)*100
 }
 
 const Result = ({ticker,pricestring,date,currentprice}) => {
@@ -46,7 +52,7 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
             for(let k = 0; k < optiondata.callExpDateMap[expdate][strike].length; k++){
                 alloptions.push({
                     "option":optiondata.callExpDateMap[expdate][strike][k],
-                    "estimatedreturn":calcreturn()
+                    "estimatedreturn":calcreturn(optiondata.callExpDateMap[expdate][strike][k],price,new Date(date))
                 })
             }
         }
