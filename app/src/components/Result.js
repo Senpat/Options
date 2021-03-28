@@ -13,7 +13,7 @@ const calcreturn = (option,estprice,date) => {
     const dateutc = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
     const timetoexp = (option.expirationDate-dateutc)/MS_PER_YEAR
     const optionprice = (option.bid+option.ask)/2
-    return (blackScholes(estprice,option.strikePrice,timetoexp,option.theoreticalVolatility/100.0,0.027,"call")/optionprice-1)*100
+    return (blackScholes(estprice,option.strikePrice,timetoexp,option.theoreticalVolatility/100.0,0.027,option.putCall)/optionprice-1)*100
 }
 
 const Result = ({ticker,pricestring,date,currentprice}) => {
@@ -25,7 +25,7 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
     useEffect(() => {
         //console.log('effect')
         axios
-            .get('https://api.tdameritrade.com/v1/marketdata/chains?apikey='+tdkey+'&symbol='+ticker.toUpperCase()+'&contractType=CALL&fromDate='+date)
+            .get('https://api.tdameritrade.com/v1/marketdata/chains?apikey='+tdkey+'&symbol='+ticker.toUpperCase()+'&fromDate='+date)
             .then(response => {
                 //console.log(response.data)
                 setOptiondata(response.data)
@@ -56,6 +56,13 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
                 alloptions.push({
                     "option":optiondata.callExpDateMap[expdate][strike][k],
                     "estimatedreturn":calcreturn(optiondata.callExpDateMap[expdate][strike][k],price,new Date(date))
+                })
+            }
+            for(let k = 0; k < optiondata.putExpDateMap[expdate][strike].length; k++){
+                if(optiondata.putExpDateMap[expdate][strike][k].ask === 0 || optiondata.putExpDateMap[expdate][strike][k].ask === 0) continue
+                alloptions.push({
+                    "option":optiondata.putExpDateMap[expdate][strike][k],
+                    "estimatedreturn":calcreturn(optiondata.putExpDateMap[expdate][strike][k],price,new Date(date))
                 })
             }
         }

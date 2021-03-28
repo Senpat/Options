@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react'
+import {TradingViewEmbed, widgetType} from "react-tradingview-embed"
 
 import axios from 'axios'
 
@@ -58,9 +59,23 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
     return (
         <div class='chart'>
             <h1>{stockdata.name} ({stockdata.stock_exchange.acronym}:{stockdata.symbol})</h1>
-            <h3>Current Price: ${stockprice}</h3>
+            {/*<h3>Current Price: ${stockprice}</h3>*/}
 
-            <Widget symbol={stockdata.symbol} exchange={stockdata.stock_exchange.acronym}/>
+            {/*<div class="widget">
+                <TradingViewEmbed 
+                    widgetType={widgetType.SYMBOL_OVERVIEW}
+                    widgetConfig={{
+                        "symbols": [[
+                            stockdata.symbol,
+                            stockdata.symbol
+                        ]]
+                        
+                    }}
+                />
+
+                </div>*/}
+
+            <Widget stockdata={stockdata}/>
 
             {/*<AreaChart type="svg" data={stockchartdata} />*/}
         </div>

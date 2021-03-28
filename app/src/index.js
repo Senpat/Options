@@ -10,7 +10,7 @@ import './style/style.css'
 const App = () => {
 
   return (
-    <div>
+    <div id='app'>
       <BrowserRouter>
         <Header />
         <Body />

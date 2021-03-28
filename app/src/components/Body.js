@@ -30,8 +30,11 @@ const Body = () => {
 
             <h1 class='title'>Opt-Win</h1>
 
-            <input class='searchbox' type='text' value={searchtext} placeholder='Search any stock or ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
-            <button class='submitsearch' onClick={() => {setSelectedtext(searchtext)}}>Submit</button> 
+            <div>
+                <input class='searchbox' type='text' value={searchtext} placeholder='Search any ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
+                <button class='submitsearch' onClick={() => {setSelectedtext(searchtext)}}>Show</button> 
+            </div>
+            
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />
             
             <div class='form'>

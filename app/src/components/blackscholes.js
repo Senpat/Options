@@ -63,7 +63,7 @@ function _doubleFactorial(n) {
 const blackScholes = (s, k, t, v, r, callPut) => {
     var price = null;
     var w = (r * t + Math.pow(v, 2) * t / 2 - Math.log(k / s)) / (v * Math.sqrt(t));
-    if (callPut === "call") {
+    if (callPut.toLowerCase() === "call") {
         price = s * stdNormCDF(w) - k * Math.pow(Math.E, -1 * r * t) * stdNormCDF(w - v * Math.sqrt(t));
     }
     else // put

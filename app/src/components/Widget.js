@@ -1,17 +1,31 @@
 import {TradingViewEmbed, widgetType} from "react-tradingview-embed"
+import {useState} from 'react'
 
-const Widget = ({symbol,exchange}) => {
-    console.log(symbol)
+const Widget = ({stockdata}) => {
+    const [showsymbol,setShowsymbol] = useState()
+    
+    console.log(stockdata)
+    console.log(stockdata.symbol)
+    
+    if(stockdata.symbol !== showsymbol){
+        console.log("hello")
+        setShowsymbol(stockdata.symbol)
+        return (
+            <div >
+                
+    
+            </div>
+        )
+    }
 
     return (
         <div class="widget">
             <TradingViewEmbed 
                 widgetType={widgetType.SYMBOL_OVERVIEW}
                 widgetConfig={{
-                    "colorTheme": "dark",
                     "symbols": [[
-                        symbol,
-                        symbol
+                        showsymbol,
+                        showsymbol
                     ]]
                     
                 }}

@@ -1,9 +1,9 @@
 
 
 .header{
-    background-color: #07020D;
-    color: #FFFFFF;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+    position: fixed;
+}
+
+.tradingview-widget-copyright{
+    display:none;
 }
