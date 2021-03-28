@@ -1,0 +1,11 @@
+Sources:
+
+Marketstack API (https://marketstack.com)
+
+TDAmeritrade Developer API (https://developer.tdameritrade.com/apis)
+
+Tradingview Widget (https://www.tradingview.com/widget/advanced-chart/)
+
+black-scholes.js (https://www.npmjs.com/package/black-scholes)
+
+cssgradient.io (https://cssgradient.io/)

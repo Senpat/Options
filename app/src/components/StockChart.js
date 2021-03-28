@@ -1,3 +1,6 @@
+//Alternate StockChart.js with x-axis not showing up
+//console.log(JSON.stringify([]) != JSON.stringify(stockchartdata))
+//{JSON.stringify([]) != JSON.stringify(stockchartdata) ? <AreaChart type="svg" data={stockchartdata} />: <></>}
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -20,7 +23,15 @@ class AreaChart extends React.Component {
 	render() {
         console.log("in chart")
 		console.log(this.props)
-		const { data, type, width, ratio } = this.props;
+		var { data, type, width, ratio } = this.props;
+		console.log(data);
+		let newData = [...this.props.data].reverse();
+		console.log('reversed data: ', newData);
+		{/*
+		let shows = [{s: "Pink Panther"}, {s: "Chhota Bheem"}, {s: "Ben 10"}, {s: "Tom and Jerry"}, {s: "Doraemon"}];
+		let output = shows.reverse();
+		console.log(output);
+	    */}
 		return (
 			<ChartCanvas ratio={ratio} width={width} height={400}
 				margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
