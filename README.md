@@ -25,5 +25,3 @@ In our project, we learned to use widgets instead of libraries, which made the w
 
 ## What's next for Opt-Win
 In the future, this website could allow users to enter a confidence interval, support other models such as the Binomial Model, and include other types of options trading such as interest rate options. It could also be part of a larger program that supports the recommendation of other assets, such as future, forwards, and swaps.
-
-## Try it out!
