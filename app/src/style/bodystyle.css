@@ -25,6 +25,8 @@
     font-size: 16px;
 }
 
+.submitsearch, .submitparams:hover {opacity: 0.6}
+
 .form{
     display:flex;
     flex-direction:column;
