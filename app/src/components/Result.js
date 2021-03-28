@@ -25,11 +25,11 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
     })
 
     useEffect(() => {
-        //console.log('effect')
+        console.log('effect')
         axios
             .get('https://api.tdameritrade.com/v1/marketdata/chains?apikey='+tdkey+'&symbol='+ticker.toUpperCase()+'&fromDate='+date)
             .then(response => {
-                //console.log(response.data)
+                console.log(response.data)
                 setOptiondata(response.data)
             })
             .catch(err => {
@@ -54,17 +54,19 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
         for(let strike in optiondata.callExpDateMap[expdate]){
             //console.log(strike)
             for(let k = 0; k < optiondata.callExpDateMap[expdate][strike].length; k++){
-                if(optiondata.callExpDateMap[expdate][strike][k].ask === 0 || optiondata.callExpDateMap[expdate][strike][k].ask === 0) continue
+                const curoption = optiondata.callExpDateMap[expdate][strike][k]
+                if(curoption.ask === 0 || curoption.bid === 0 || curoption.closePrice === 0) continue
                 alloptions.push({
-                    "option":optiondata.callExpDateMap[expdate][strike][k],
-                    "estimatedreturn":calcreturn(optiondata.callExpDateMap[expdate][strike][k],price,new Date(date))
+                    "option":curoption,
+                    "estimatedreturn":calcreturn(curoption,price,new Date(date))
                 })
             }
             for(let k = 0; k < optiondata.putExpDateMap[expdate][strike].length; k++){
-                if(optiondata.putExpDateMap[expdate][strike][k].ask === 0 || optiondata.putExpDateMap[expdate][strike][k].ask === 0) continue
+                const curoption = optiondata.putExpDateMap[expdate][strike][k]
+                if(curoption.ask === 0 || curoption.bid === 0 || curoption.closePrice === 0) continue
                 alloptions.push({
-                    "option":optiondata.putExpDateMap[expdate][strike][k],
-                    "estimatedreturn":calcreturn(optiondata.putExpDateMap[expdate][strike][k],price,new Date(date))
+                    "option":curoption,
+                    "estimatedreturn":calcreturn(curoption,price,new Date(date))
                 })
             }
         }
@@ -109,6 +111,7 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
                 <ResultRow rank={index+1} option={element.option} estimatedreturn={element.estimatedreturn.toFixed(2)} />
                 
             ))}
+            {/*{alloptions.length === 0 && <p>No Options Found for this Stock</p>}*/}
         </div>
         
     )

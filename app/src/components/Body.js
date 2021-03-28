@@ -27,6 +27,7 @@ const Body = () => {
 
     const showstock = () => {
         setSelectedtext(searchtext)
+        //window.location.reload()
     }
 
     return (
@@ -38,8 +39,11 @@ const Body = () => {
             </div>
 
             <div>
-                <input class='searchbox' type='text' value={searchtext} placeholder='Search any ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
-                <button class='submitsearch' onClick={() => {showstock()}}>Show</button> 
+                
+                    <input class='searchbox' type='text' value={searchtext} placeholder='Search any ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
+                    <button class='submitsearch' onClick={() => {showstock()}}>Show</button>     
+                
+                
             </div>
             
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />
