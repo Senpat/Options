@@ -6,6 +6,8 @@ import ResultRow from './ResultRow'
 
 import blackScholes from './blackscholes'
 import {marketstackkey,tdkey} from "./../apikey.js"
+import '../style/Result.css'
+import '../style/ResultRow.css'
 
 const MS_PER_YEAR = 1000*60*60*24*365
 
@@ -77,7 +79,8 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
 
     //console.log(topoptions)
     return (
-        <div class='result'>
+        <div class='root'>
+        <h2 class='row'>Stock&emsp;&emsp;&emsp;&emsp;Time to Maturity&emsp;&emsp;&emsp;&emsp;Strike Price&emsp;&emsp;&emsp;&emsp;Estimated Return&emsp;&emsp;&emsp;&emsp;Option Price&emsp;&emsp;&emsp;&emsp;Call/Put</h2>
             {topoptions.map((element, index) => (
                 <ResultRow rank={index+1} option={element.option} estimatedreturn={element.estimatedreturn.toFixed(2)} />
                 
