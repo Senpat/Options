@@ -27,6 +27,7 @@ const Body = () => {
 
     return (
         <div class='body'>
+            <h1 class='title'>Options</h1>
             <input class='searchbox' type='text' value={searchtext} placeholder='Search any stock or ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
             <button class='submitsearch' onClick={() => {setSelectedtext(searchtext)}}>Submit</button> 
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />

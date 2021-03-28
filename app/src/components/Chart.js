@@ -14,11 +14,11 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
     const [stockchartdata,setStockchartdata] = useState([])
     //const [stockprice,setStockprice] = useState(-1)
     useEffect(() => {
-        console.log('effect ' + ticker + ' ' + marketstackkey)
+        //console.log('effect ' + ticker + ' ' + marketstackkey)
         axios
             .get('http://api.marketstack.com/v1/tickers/'+ticker.toUpperCase()+'?access_key=' + marketstackkey)
             .then(response => {
-                console.log(response.data)
+                //console.log(response.data)
                 setStockdata(response.data)
             })
             .catch(err => {
@@ -27,31 +27,31 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
     }, [ticker])
 
     useEffect(() => {
-        console.log('effect ' + ticker)
+        //console.log('effect ' + ticker)
         axios
             .get('http://api.marketstack.com/v1/tickers/'+ticker.toUpperCase()+'/eod/latest?access_key=' + marketstackkey)
             .then(response => {
-                console.log(response.data.close)
+                //console.log(response.data.close)
                 setStockprice(response.data.close)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [ticker])
-
+    
     useEffect(() => {
-        console.log('effect ' + ticker)
+        console.log('chart data effect ' + ticker)
         axios
-            .get('http://api.marketstack.com/v1/eod?access_key='+marketstackkey+'&symbols='+ticker+'&date_from=2020-03-27&limit=365')
+            .get('http://api.marketstack.com/v1/eod?access_key='+marketstackkey+'&symbols='+ticker.toUpperCase()+'&date_from=2020-03-27&limit=365')
             .then(response => {
-                console.log(response.data.data)
+                //console.log(response.data.data)
                 setStockchartdata(response.data.data)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [ticker])
-
+    console.log(stockchartdata)
     if(stockdata.name === 'nostock') return (<div></div>)
 
     return (

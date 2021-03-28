@@ -21,11 +21,11 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
     })
 
     useEffect(() => {
-        console.log('effect')
+        //console.log('effect')
         axios
             .get('https://api.tdameritrade.com/v1/marketdata/chains?apikey='+tdkey+'&symbol='+ticker.toUpperCase()+'&contractType=CALL&fromDate='+date)
             .then(response => {
-                console.log(response.data)
+                //console.log(response.data)
                 setOptiondata(response.data)
             })
             .catch(err => {
@@ -50,6 +50,7 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
         for(let strike in optiondata.callExpDateMap[expdate]){
             //console.log(strike)
             for(let k = 0; k < optiondata.callExpDateMap[expdate][strike].length; k++){
+                if(optiondata.callExpDateMap[expdate][strike][k].ask === 0 || optiondata.callExpDateMap[expdate][strike][k].ask === 0) continue
                 alloptions.push({
                     "option":optiondata.callExpDateMap[expdate][strike][k],
                     "estimatedreturn":calcreturn(optiondata.callExpDateMap[expdate][strike][k],price,new Date(date))
@@ -63,8 +64,9 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
     }).reverse()
 
     let topoptions = alloptions.slice(0,10);
+    //console.log(topoptions[0].option)
 
-    console.log(topoptions)
+    //console.log(topoptions)
     return (
         <div class='result'>
             {topoptions.map((element, index) => (
