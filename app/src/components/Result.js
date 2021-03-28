@@ -45,10 +45,10 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
 
     let alloptions = []
     for(let expdate in optiondata.callExpDateMap){
-        console.log(expdate)
+        //console.log(expdate)
         if(!optiondata.callExpDateMap.hasOwnProperty(expdate)) continue
         for(let strike in optiondata.callExpDateMap[expdate]){
-            console.log(strike)
+            //console.log(strike)
             for(let k = 0; k < optiondata.callExpDateMap[expdate][strike].length; k++){
                 alloptions.push({
                     "option":optiondata.callExpDateMap[expdate][strike][k],
