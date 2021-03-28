@@ -15,11 +15,11 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
     const [stockchartdata,setStockchartdata] = useState([])
     //const [stockprice,setStockprice] = useState(-1)
     useEffect(() => {
-        //console.log('effect ' + ticker + ' ' + marketstackkey)
+        console.log('effect ' + ticker + ' ' + marketstackkey)
         axios
             .get('http://api.marketstack.com/v1/tickers/'+ticker.toUpperCase()+'?access_key=' + marketstackkey)
             .then(response => {
-                //console.log(response.data)
+                console.log(response.data)
                 setStockdata(response.data)
             })
             .catch(err => {
@@ -28,11 +28,11 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
     }, [ticker])
 
     useEffect(() => {
-        //console.log('effect ' + ticker)
+        console.log('effect2 ' + ticker)
         axios
             .get('http://api.marketstack.com/v1/tickers/'+ticker.toUpperCase()+'/eod/latest?access_key=' + marketstackkey)
             .then(response => {
-                //console.log(response.data.close)
+                console.log(response.data.close)
                 setStockprice(response.data.close)
             })
             .catch(err => {
