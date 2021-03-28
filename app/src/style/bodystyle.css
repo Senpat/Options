@@ -6,8 +6,13 @@
     align-items: center;
 }
 
-.title{
+.toppart{
     margin: 25px 0px 50px 0px;
+    text-align: center;
+}
+
+.subtitle{
+    font-size: 16px;
 }
 
 .searchbox{
@@ -25,7 +30,7 @@
     font-size: 16px;
 }
 
-.submitsearch, .submitparams:hover {opacity: 0.6}
+.submitsearch:hover, .submitparams:hover {opacity: 0.6}
 
 .form{
     display:flex;

@@ -79,8 +79,32 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
 
     //console.log(topoptions)
     return (
-        <div class='root'>
-        <h2 class='row'>Stock&emsp;&emsp;&emsp;&emsp;Time to Maturity&emsp;&emsp;&emsp;&emsp;Strike Price&emsp;&emsp;&emsp;&emsp;Estimated Return&emsp;&emsp;&emsp;&emsp;Option Price&emsp;&emsp;&emsp;&emsp;Call/Put</h2>
+        <div class='results'>
+            <div class='row'>
+                {/*
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Stock</td>
+                            <td>Expiration Date</td>
+                            <td>Strike Price</td>
+                            <td>Estimated Return</td>
+                            <td>Premium</td>
+                            <td>Call/Put</td>
+                        </tr>
+                    </tbody>
+                </table>*/}
+                <p>Stock</p>
+                <p>Expiration Date</p>
+                <p>Strike Price</p>
+                <p>Estimated Return</p>
+                <p>Premium</p>
+                <p>Call/Put</p>
+            </div>
+            
+            {/*
+            Stock&emsp;&emsp;&emsp;&emsp;Time to Maturity&emsp;&emsp;&emsp;&emsp;Strike Price&emsp;&emsp;&emsp;&emsp;Estimated Return&emsp;&emsp;&emsp;&emsp;Option Price&emsp;&emsp;&emsp;&emsp;Call/Put</div>
+            */}
             {topoptions.map((element, index) => (
                 <ResultRow rank={index+1} option={element.option} estimatedreturn={element.estimatedreturn.toFixed(2)} />
                 

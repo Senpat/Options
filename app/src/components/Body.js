@@ -25,14 +25,21 @@ const Body = () => {
         setSelecteddate(date)
     }
 
+    const showstock = () => {
+        setSelectedtext(searchtext)
+    }
+
     return (
         <div class='body'>
-
-            <h1 class='title'>Opt-Win</h1>
+            
+            <div class='toppart'>
+                <h1 class='title'>Opt-Win</h1>
+                <h2 class='subtitle'>Find the most optimal options here!</h2>
+            </div>
 
             <div>
                 <input class='searchbox' type='text' value={searchtext} placeholder='Search any ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
-                <button class='submitsearch' onClick={() => {setSelectedtext(searchtext)}}>Show</button> 
+                <button class='submitsearch' onClick={() => {}}>Show</button> 
             </div>
             
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />
