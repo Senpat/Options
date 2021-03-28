@@ -27,14 +27,22 @@ const Body = () => {
 
     return (
         <div class='body'>
-            <h1 class='title'>Options</h1>
+
+            <h1 class='title'>Opt-Win</h1>
+
             <input class='searchbox' type='text' value={searchtext} placeholder='Search any stock or ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
             <button class='submitsearch' onClick={() => {setSelectedtext(searchtext)}}>Submit</button> 
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />
             
             <div class='form'>
-                <input class='pricebox' type='text' value={expprice} placeholder='100.00' onChange={(e) => {setExpprice(e.target.value)}} />
-                <input class='datebox' type='date' value={date} onChange={(e) => {setDate(e.target.value)}} />
+                <div class='priceinput'>
+                    <label>Estimated Stock Price:</label>
+                    <input class='pricebox' type='text' value={expprice} placeholder='100.00' onChange={(e) => {setExpprice(e.target.value)}} /> 
+                </div>
+                <div class='dateinput'>
+                    <label>Date:</label>
+                    <input class='datebox' type='date' value={date} onChange={(e) => {setDate(e.target.value)}} />   
+                </div>
                 <button class='submitparams' onClick={submitparams}>Go</button> 
             </div>
             

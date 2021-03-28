@@ -2,6 +2,8 @@ import {useState,useEffect} from 'react'
 
 import axios from 'axios'
 
+import ResultRow from './ResultRow'
+
 import blackScholes from './blackscholes'
 import {marketstackkey,tdkey} from "./../apikey.js"
 
@@ -70,7 +72,8 @@ const Result = ({ticker,pricestring,date,currentprice}) => {
     return (
         <div class='result'>
             {topoptions.map((element, index) => (
-                <p>{index+1}: {element.option.description}, Estimated return: {element.estimatedreturn.toFixed(2)}%</p>
+                <ResultRow rank={index+1} option={element.option} estimatedreturn={element.estimatedreturn.toFixed(2)} />
+                
             ))}
         </div>
         

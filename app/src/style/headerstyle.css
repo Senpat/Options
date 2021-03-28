@@ -1,0 +1,9 @@
+
+
+.header{
+    background-color: #07020D;
+    color: #FFFFFF;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

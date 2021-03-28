@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import {marketstackkey,tdkey} from "./../apikey.js"
 
+import Widget from "./Widget"
 import AreaChart from "./StockChart"
 import './../style/chartstyle.css'
 
@@ -38,7 +39,7 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
                 console.log(err)
             })
     }, [ticker])
-    
+    /*
     useEffect(() => {
         console.log('chart data effect ' + ticker)
         axios
@@ -51,14 +52,15 @@ const Chart = ({ticker,stockprice,setStockprice}) => {
                 console.log(err)
             })
     }, [ticker])
-    console.log(stockchartdata)
+    console.log(stockchartdata)*/
     if(stockdata.name === 'nostock') return (<div></div>)
 
     return (
         <div class='chart'>
-            <h1>{stockdata.symbol}: {stockdata.name}</h1>
-            <h2>{stockdata.stock_exchange.acronym}</h2>
-            <h3>Price: ${stockprice}</h3>
+            <h1>{stockdata.name} ({stockdata.stock_exchange.acronym}:{stockdata.symbol})</h1>
+            <h3>Current Price: ${stockprice}</h3>
+
+            <Widget symbol={stockdata.symbol} exchange={stockdata.stock_exchange.acronym}/>
 
             {/*<AreaChart type="svg" data={stockchartdata} />*/}
         </div>
