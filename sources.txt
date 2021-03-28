@@ -1,11 +1,11 @@
 Sources:
 
-https://marketstack.com/documentation?fbclid=IwAR2Lrw1AgSTKQ-p3LlmKz91I-WnTXNqSlIolQX6ocnwRgrlCSvBf-RhqCIg
+Marketstack API (https://marketstack.com)
 
-https://cssgradient.io/?fbclid=IwAR3DAUMCRswvcDm8l9DMNLJfDhB4KNtxa24OEqU3aUr7ab9L3CY62p79qAI
+TDAmeritrade Developer API (https://developer.tdameritrade.com/apis)
 
-https://www.tradingview.com/widget/advanced-chart/
+Tradingview Widget (https://www.tradingview.com/widget/advanced-chart/)
 
-https://www.investopedia.com/terms/b/blackscholes.asp
+black-scholes.js (https://www.npmjs.com/package/black-scholes)
 
-https://www.npmjs.com/package/black-scholes
+cssgradient.io (https://cssgradient.io/)
