@@ -39,7 +39,7 @@ const Body = () => {
 
             <div>
                 <input class='searchbox' type='text' value={searchtext} placeholder='Search any ticker' onChange={(e) => {setSearchtext(e.target.value)}} />
-                <button class='submitsearch' onClick={() => {}}>Show</button> 
+                <button class='submitsearch' onClick={() => {showstock()}}>Show</button> 
             </div>
             
             <Chart ticker={selectedtext} stockprice={stockprice} setStockprice={setStockprice} />
